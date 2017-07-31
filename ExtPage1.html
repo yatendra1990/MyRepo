@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+         Ext.onReady(function() {
+         var data = [{
+    description: "$105: Standard Registration",
+    price: "105",
+    rate: "rate1"
+}, {
+    description: "$125: Non-Member Rate",
+    price: "125",
+    rate: "rate2"
+}, {
+    description: "$44: Price for SK tester",
+    price: "44",
+    rate: "rate3"
+}, {
+    description: "$11: Another price :O",
+    price: "11",
+    rate: "rate5"
+}];
+
+
+Ext.define('ComboBoxRates', {
+    extend: 'Ext.data.Store',
+    alias: 'store.rates',
+    storeId: 'ratescombo',
+    fields: ['rate', 'description', 'price'],
+    data: []
+});
+
+Ext.define('ComboPanel', {
+    extend: 'Ext.panel.Panel',
+    title: 'Test',
+    renderTo: Ext.getBody(),
+    items: [{
+        xtype: 'combobox',
+        editable: false,
+        displayField: 'description',
+        valueField: 'price',
+        queryMode: 'local',
+        store: {
+            type: 'rates'
+        }
+    }]
+});
+
+
+Ext.application({
+    name: 'Fiddle',
+
+    launch: function() {
+        var panel = Ext.create('ComboPanel'),
+            combo = panel.down('combobox'),
+            rates = combo.getStore();
+
+        rates.loadData(data);
+    }
+});
+		 });
+      </script>
+   </head>
+   <body>
+      <div id="helloWorldPanel" />
+   </body>
+</html>

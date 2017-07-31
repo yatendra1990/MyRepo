@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<link href='styles.css', rel='stylesheet', type='text/css'/>
+
+		<script src='app.js', type='text/javascript' ></script>
+
+		<title>Modal Window</title>
+
+	</head>
+
+	<body>
+		<div id=wrapper>
+			<h1>
+				Pure Javascript Modal Window
+			</h1>
+
+			<button onclick='app.overlay("Hello World")'>
+				Show Modal Window
+			</button>
+
+			<div id=overlay>
+				<div>
+					<p id=message></p>
+					<button id='okay' onclick=app.overlay('Close')>Okay</button>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+
+</html>

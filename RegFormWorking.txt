@@ -1,0 +1,74 @@
+Ext.define('app.view.RegistrationView', {//use class for
+    extend:'Ext.form.Panel',
+    width: 500,
+    height: 300,
+    padding: 10,
+    scrollable: true,
+    id: 'UsrFrm',
+    layout: {   //define layout types
+        type: 'vbox',
+        pack: 'center',
+        align: 'center'
+    },
+    title: "User Form",
+    layout: 'form',
+
+    fieldDefaults: {
+        labelAlign: 'right',
+        labelWidth: 120,
+        msgTarget: 'side'
+    },
+
+    renderTo: document.body,//associate with body tag
+    bodyPadding: 5,
+    items: [{
+        xtype: 'textfield',
+        name: 'uName',
+        fieldLabel: 'Name',
+        allowBlank: false
+    }, {
+        xtype: 'textfield',
+        name: 'fName',
+        fieldLabel: 'Father Name'
+    }, {
+        xtype: 'datefield',
+        name: 'dob',
+        fieldLabel: 'D O B'
+    }, {
+        xtype: 'textareafield',
+        name: 'addrss',
+        fieldLabel: 'Address',
+        maxValue: 250
+    }, {
+        xtype: 'numberfield',
+        name: 'cntct',
+        fieldLabel: 'Contact No.',
+        maxValue: 9999999999,
+    }, {
+        xtype: 'button',
+        text: 'SUBMIT',
+        width: 200,
+        id: 'sbmtBtn',
+        listeners: {            //Implement listener
+            click: function () {
+                var form = Ext.getCmp('UsrFrm');
+                var values = form.getValues();//get values from form id
+                console.log(values);
+
+                Ext.Ajax.request({
+                    url: '/Home/Save',
+                    method: 'POST',
+                    timeout: 10000,
+                    params: form.getForm().getFieldValues(),
+                    success: function () {
+                        alert('success');
+                    },
+                    failure: function () {
+                        alert('fail');
+                    }
+
+                });
+            }
+        }
+    }]
+});

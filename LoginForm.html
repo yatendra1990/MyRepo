@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+         Ext.onReady(function() {
+         Ext.create('Ext.form.Panel',{
+			renderTo:'helloWorldPanel',
+			xtype: 'form-login',
+        
+    title: 'Login',
+    frame:true,
+    width: 320,
+    bodyPadding: 10,
+    
+    defaultType: 'textfield',
+    
+    items: [{
+        allowBlank: false,
+        fieldLabel: 'User ID',
+        name: 'user',
+        emptyText: 'user id'
+    }, {
+        allowBlank: false,
+        fieldLabel: 'Password',
+        name: 'pass',
+        emptyText: 'password',
+        inputType: 'password'
+    }, {
+        xtype:'checkbox',
+        fieldLabel: 'Remember me',
+        name: 'remember'
+    }],
+    
+    buttons: [
+        { text:'Register' },
+        { text:'Login' }
+    ]
+		 });
+		
+		 });
+      </script>
+   </head>
+   <body>
+      <div id="helloWorldPanel" />
+   </body>
+</html>

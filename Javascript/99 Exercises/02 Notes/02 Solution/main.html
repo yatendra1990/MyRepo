@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Local Storage</title>
+
+	<style>
+	</style>
+
+	<script type='text/javascript' src='main.js'></script>
+
+</head>
+
+<body>
+	<h1>
+		Notes
+	</h1>
+
+	<div>
+		<p>
+			Hello. Please add a note
+		</p>
+		<label for=field>New Note: </label>
+		<input id=field autocomplete=on />
+		<button onclick=onSave()>
+			Save
+		</button>
+	</div>
+
+	<div>
+		<button onclick=onClear()>
+			Clear all notes
+		</button>
+	</div>
+	<div>
+		<ul id=allnotes>
+		</ul>
+	</div>
+
+</body>
+</html>

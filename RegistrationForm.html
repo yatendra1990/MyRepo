@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+         Ext.onReady(function() {
+         //Ext.create('RegistrationForm');
+		 var data = [{
+    description: "$105: Standard Registration",
+    price: "105",
+    rate: "rate1"
+}, {
+    description: "$125: Non-Member Rate",
+    price: "125",
+    rate: "rate2"
+}, {
+    description: "$44: Price for SK tester",
+    price: "44",
+    rate: "rate3"
+}, {
+    description: "$11: Another price :O",
+    price: "11",
+    rate: "rate5"
+}];
+		 
+		 
+		 Ext.define('ComboBoxRates', {
+    extend: 'Ext.data.Store',
+    alias: 'store.rates',
+    storeId: 'ratescombo',
+    fields: ['rate', 'description', 'price'],
+    data: []
+});
+		 
+		 Ext.define('Registration',{
+		 extend:'Ext.form.Panel',
+			xtype:'form-register',
+			renderTo:Ext.getBody(),
+			frame:true,
+			title:'Register',
+			bodyPadding:10,
+			scrollable:true,
+			width:455,
+			
+			fieldDefaults:{
+			    labelAlign:'right',
+				labelWidth:120,
+				msgTarget:'side'
+			},
+			
+			items:[{
+				xtype:'fieldset',
+				title:'User Info',
+				defaultType:'textfield',
+				defaults:{
+					anchor:'100%'
+					},
+					items:[
+						{allowBlank:false,fieldLabel:'User ID',name:'user', emptyText:'User ID'},
+						{allowBlank:false,fieldLabel:'Password',name:'password', emptyText:'Password',inputType:'password'},
+						{allowBlank:false,fieldLabel:'Verify',name:'password', emptyText:'Password',inputType:'password'},
+					]
+			},
+			{
+				xtype:'fieldset',
+				title:'Contact Information',
+				
+				defaultType:'textfield',
+				defaults:{
+					anchor:'100%'
+				},
+				
+				items:[
+					{fieldLabel:'First Name',emptyText:'First Name',name:'first'},
+					{fieldLabel:'Last Name', emptyText:'Last Name',name:'last'},
+					{fieldLabel:'Company Name',emptyText:'Company Name',name:'company'},
+					{fieldLabel:'Email', emptyText:'Email', name:'email',vtype:'email'},
+					{fieldLabel:'State',name:'state',
+						xtype: 'combobox',
+        editable: false,
+        displayField: 'description',
+        valueField: 'price',
+        queryMode: 'local',
+        store: {
+            type: 'rates'
+        }
+					},
+					{xtype:'datefield',fieldLabel:'Date Of Birth',name:'dob',allowBlank:false,maxValue:new Date()}
+				]
+			}],
+			buttons: [{
+        text: 'Register',
+        disabled: true,
+        formBind: true
+    }]
+			
+		 });
+		 
+		 Ext.application({
+    name: 'Fiddle',
+
+    launch: function() {
+        var panel = Ext.create('Registration'),
+            combo = panel.down('combobox'),
+            rates = combo.getStore();
+
+        rates.loadData(data);
+    }
+});
+		 });
+      </script>
+   </head>
+   <body>
+      <div id="helloWorldPanel" />
+   </body>
+</html>

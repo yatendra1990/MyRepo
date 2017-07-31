@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Local Storage</title>
+
+	<style>
+		.hide {
+			display: none;
+		}
+
+		#entername {
+			width: 300px;
+			height: 150px;
+			/*border: 2px solid red;*/
+		}
+
+		#showname {
+			width: 300px;
+			height: 50px;
+			border: 2px solid green;
+		}
+	</style>
+
+	<script type='text/javascript' src='main.js'></script>
+
+</head>
+
+<body>
+	<h1>
+		Local Storage Example
+	</h1>
+
+	<div id=entername>
+		<p>
+			Hello. Please enter your name
+		</p>
+		<label for=field>Name: </label>
+		<input id=field name=myname autocomplete=on />
+		<input type=submit onclick=onSave() value=Save />
+	</div>
+
+	<div id=showname class=hide>
+		<div id=name></div>
+		<input type=submit onclick=onClear() value=Clear />
+	</div>
+
+</body>
+</html>
