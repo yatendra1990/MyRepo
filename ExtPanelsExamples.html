@@ -1,0 +1,60 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://cdn.sencha.io/try/extjs/4.1.1/resources/css/ext-all.css" />
+    <script src="http://cdn.sencha.io/try/extjs/4.1.1/ext-all.js"></script>
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			Ext.define('myPanel',{
+			extend:'Ext.form.Panel',
+    xtype: 'panel1',
+    title: 'Inner Panel Title',
+    iconCls: 'x-fa fa-html5',
+    height: 200,
+    width: 'auto',
+    bodyPadding: 12,
+	collapsible:true,
+    items:[{
+		xtype:'textfield',
+		fieldLabel:'User Name'
+	},{
+		xtype:'textfield',
+		fieldLabel:'Password'
+	},{
+		xtype:'button',
+		text:'Save',
+		position:'right'
+	}
+	],
+    renderTo: Ext.getBody()
+});
+Ext.create('Ext.form.Panel',{
+    xtype: 'panel2',
+    title: 'Outer Panel Title',
+    iconCls: 'x-fa fa-html5',
+    height: 400,
+    width: 400,
+    bodyPadding: 12,
+	floating:true,
+	collapsible:true,
+	closable:true,
+    html: 'this is the Panel2',
+	items:[{
+		xtype:'datefield',
+		fieldLabel:'Start Date',
+		allowBlank:false
+	},
+		{ xtype:'datefield',
+		fieldLabel:'End Date'},
+		{xtype:'panel1'}
+	],
+    renderTo: Ext.getBody()
+});
+
+		});
+	</script>
+</head>
+<body>
+
+	
+</body>
+</html>

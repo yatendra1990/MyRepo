@@ -1,0 +1,98 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://cdn.sencha.io/try/extjs/4.1.1/resources/css/ext-all.css" />
+    <script src="http://cdn.sencha.io/try/extjs/4.1.1/ext-all.js"></script>
+	<script type="text/javascript">
+		Ext.onReady(function() {
+Ext.create('Ext.form.Panel',{
+    xtype: 'panel',
+    title: 'Panel Title',
+    iconCls: 'x-fa fa-html5',
+    height: 400,
+    width: 400,
+    bodyPadding: 12,
+	floating:true,
+	collapsible:true,
+	
+	items:[{
+            xtype : 'toolbar',
+            docked: 'top',
+            title: 'My Toolbar'
+        },
+	{
+		xtype:'datefield',
+		fieldLabel:'Start Date',
+		allowBlank:false
+	},
+		{ 	xtype:'datefield',
+			fieldLabel:'End Date'
+		},
+		{
+			xtype:'button',
+			text:'Show Window',
+			handler:function(){
+			var val=Ext.getCmp('form');
+			alert(val);
+				Ext.widget('useradd')
+			}
+		}
+	],
+    renderTo: Ext.getBody()
+});
+
+	Ext.define('AddWindow', {
+    extend: 'Ext.window.Window',
+    alias: 'widget.useradd',
+    title: 'Entered Info',
+    layout: 'fit',
+    autoShow: true,
+    initComponent: function () {
+        this.items = [
+            {
+                xtype: 'form',
+                bodyStyle: {
+                    background: 'none',
+                    padding: '10px',
+                    border: '0'
+                },
+                items: [
+                    {
+                        xtype: 'textfield',
+                        name: 'name',
+                        allowBlank: false,
+                        fieldLabel: 'Start Date',
+						readOnly: true
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'email',
+                        allowBlank: false,
+                        fieldLabel: 'End Date',
+						readOnly: true
+                    }
+                ]
+            }
+        ];
+        this.buttons = [
+            {
+                text: 'Save',
+                action: 'save'
+            },
+            {
+                text: 'Cancel',
+                scope: this,
+                handler: this.close
+            }
+        ];
+        this.callParent(arguments);
+    }
+});
+
+		});
+	</script>
+</head>
+<body>
+
+	
+</body>
+</html>
