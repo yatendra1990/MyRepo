@@ -4,10 +4,19 @@
     <script src="http://cdn.sencha.io/try/extjs/4.1.1/ext-all.js"></script>
 	<script type="text/javascript">
 		Ext.onReady(function() {
+		Ext.define('DataModel',{
+			extend:'Ext.data.Model',
+			fields:[
+				{name:'val1',type:'date'},
+				{name:'val2',type:'date'}
+			]
+		});
 Ext.create('Ext.form.Panel',{
     xtype: 'panel',
+	model:'DataModel',
     title: 'Panel Title',
     iconCls: 'x-fa fa-html5',
+	id:'tstForm',
     height: 400,
     width: 400,
     bodyPadding: 12,
@@ -22,18 +31,28 @@ Ext.create('Ext.form.Panel',{
 	{
 		xtype:'datefield',
 		fieldLabel:'Start Date',
+		name:'val1',
 		allowBlank:false
 	},
 		{ 	xtype:'datefield',
-			fieldLabel:'End Date'
+			fieldLabel:'End Date',
+			name:'val2',
+			allowBlank:false
 		},
 		{
 			xtype:'button',
+			disabled:true,
+			formBind:true,
 			text:'Show Window',
 			handler:function(){
-			var val=Ext.getCmp('form');
-			alert(val);
-				Ext.widget('useradd')
+			var val=Ext.getCmp('tstForm').getValues();
+			console.log(val);
+			//Ext.MessageBox.alert('Form Values',val.val1);
+				Ext.create('AddWindow')
+				var startDate = Ext.ComponentQuery.query("#dt1")[0];   //get component by its itemId and assign into address variable
+				startDate.setValue(val.val1);
+				var endDate = Ext.ComponentQuery.query("#dt2")[0];   //get component by its itemId and assign into address variable
+				endDate.setValue(val.val2);
 			}
 		}
 	],
@@ -45,6 +64,8 @@ Ext.create('Ext.form.Panel',{
     alias: 'widget.useradd',
     title: 'Entered Info',
     layout: 'fit',
+	id:'win',
+	model:'DataModel',
     autoShow: true,
     initComponent: function () {
         this.items = [
@@ -58,17 +79,19 @@ Ext.create('Ext.form.Panel',{
                 items: [
                     {
                         xtype: 'textfield',
-                        name: 'name',
+                        name: 'val1',
                         allowBlank: false,
                         fieldLabel: 'Start Date',
-						readOnly: true
+						readOnly: true,
+						itemId:'dt1'
                     },
                     {
                         xtype: 'textfield',
-                        name: 'email',
+                        name: 'val2',
                         allowBlank: false,
                         fieldLabel: 'End Date',
-						readOnly: true
+						readOnly: true,
+						itemId:'dt2'
                     }
                 ]
             }
@@ -92,7 +115,9 @@ Ext.create('Ext.form.Panel',{
 	</script>
 </head>
 <body>
-
+<div>
+ <h3>this is the Example for passing form values to other window</h3>
+</div>
 	
 </body>
 </html>
