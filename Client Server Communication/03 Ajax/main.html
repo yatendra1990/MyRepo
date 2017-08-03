@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Ajax Example</title>
+
+	<script>
+		function makeAjax(){
+
+
+			var ajax=new XMLHttpRequest();
+
+			ajax.onreadystatechange = function() {
+				console.info('state', ajax.readyState, ajax.status, new Date());
+				if (ajax.readyState == 4 && ajax.status == 200) {
+					console.info('success', ajax.responseText);
+					alert('Success! Response was ' + ajax.responseText);
+				}
+			}
+
+			ajax.open("GET", "http://192.168.56.1:4567/getajax?hello=world", true);
+			// ajax.open("GET", "http://localhost:4567/getajax?hello=world", true);
+			ajax.send();
+		}
+	</script>
+
+</head>
+
+<body>
+	<h1>
+		Ajax Example
+	</h1>
+
+	<button onclick=makeAjax()>
+		Make Ajax call
+	</button>
+
+	<!-- <img width=600 height=400 src="http://www.bing.com/az/hprichbg/rb/GareSaintLazare_ROW8482895875_1366x768.jpg" /> -->
+</body>
+
+</html>

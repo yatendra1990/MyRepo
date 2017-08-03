@@ -1,0 +1,59 @@
+{
+    "name": "app",
+    "settings": {
+        "cmd": {},
+        "urlPrefix": "http://localhost:60879/BookReviewsAppExtjs/",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "sdkPath": "",
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "codeGenFormat": "Class",
+        "senchaIoKey": "",
+        "senchaIoPath": "http://extjs.cachefly.net/designer/IO/",
+        "instantiateStore": true,
+        "saveOnDeploy": false,
+        "appName": "MyApp",
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        }
+    },
+    "xdsVersion": "3.0.0",
+    "xdsBuild": 1337,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000003,
+    "framework": "ext42",
+    "viewOrderMap": {
+        "view": [
+            "d0785e18-4308-4cc9-88ab-d5151bd7f7eb",
+            "bc640519-610b-4e92-855e-bb5c2490e91d",
+            "cecb5afc-6da0-4cb0-ae1c-5e201d327b6a",
+            "6f5b457d-8052-4e9b-9ea2-16cd49a03283",
+            "67270e91-e0ac-420b-bc00-a539b13a9ec0"
+        ],
+        "store": [
+            "77a4c512-50f1-4cf7-9c36-ab7cc8defed8",
+            "2edfb51c-fb8b-4b7d-b2e7-eaf9fe55856d"
+        ],
+        "controller": [
+            "9ac155f2-5756-4216-b94b-68b2cb097dd7"
+        ],
+        "model": [
+            "1e043d46-2d4b-4831-bc73-17d0a4f99006",
+            "3752c8bd-0aa4-4096-a550-5db9e50da340"
+        ],
+        "resource": [
+            "7407d22e-b06c-4a90-afc5-f562a9aa1ac7",
+            "34b8b1fa-2ee2-44cc-8a16-7fcaf37ecd93"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

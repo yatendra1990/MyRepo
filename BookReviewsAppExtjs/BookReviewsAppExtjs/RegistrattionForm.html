@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+         Ext.onReady(function() {
+         //Ext.create('RegistrationForm');
+		 Ext.define('MyModel',{
+			extend:'Ext.data.Model',
+			fields:['abbr','State','Description','Country']
+		 });
+		 
+		 Ext.create('Ext.data.Store',{
+			
+			alias:'States',
+			model:'MyModel',
+			storeId:'states',
+			data:[
+				[0,'Al','Alabama','The heart of Dixie'],
+				 [1, 'AK', 'Alaska', 'The Land of the Midnight Sun'],
+        [2, 'AZ', 'Arizona', 'The Grand Canyon State'],
+        [3, 'AR', 'Arkansas', 'The Natural State'],
+        [4, 'CA', 'California', 'The Golden State'],
+        [5, 'CO', 'Colorado', 'The Mountain State'],
+        [6, 'CT', 'Connecticut', 'The Constitution State']
+     
+			]
+		 });
+		 
+		 Ext.create('Ext.form.Panel',{
+			xtype:'form-register',
+			renderTo:Ext.getBody(),
+			frame:true,
+			title:'Register',
+			bodyPadding:10,
+			scrollable:true,
+			width:455,
+			
+			fieldDefaults:{
+			    labelAlign:'right',
+				labelWidth:120,
+				msgTarget:'side'
+			},
+			
+			items:[{
+				xtype:'fieldset',
+				title:'User Info',
+				defaultType:'textfield',
+				defaults:{
+					anchor:'100%'
+					},
+					items:[
+						{allowBlank:false,fieldLabel:'User ID',name:'user', emptyText:'User ID'},
+						{allowBlank:false,fieldLabel:'Password',name:'password', emptyText:'Password',inputType:'password'},
+						{allowBlank:false,fieldLabel:'Verify',name:'password', emptyText:'Password',inputType:'password'},
+					]
+			},
+			{
+				xtype:'fieldset',
+				title:'Contact Information',
+				
+				defaultType:'textfield',
+				defaults:{
+					anchor:'100%'
+				},
+				
+				items:[
+					{fieldLabel:'First Name',emptyText:'First Name',name:'first'},
+					{fieldLabel:'Last Name', emptyText:'Last Name',name:'last'},
+					{fieldLabel:'Company Name',emptyText:'Company Name',name:'company'},
+					{fieldLabel:'Email', emptyText:'Email', name:'email',vtype:'email'},
+					{fieldLabel:'State',name:'state',xtype: 'combobox',
+						store:{type:'states'},
+						valueField:'abbr',
+						displayField:'state',
+						typeAhead:true,
+						queryMode:'local',
+						editable: false,
+						emptyText:'Select a state...'
+					},
+					{xtype:'datefield',fieldLabel:'Date Of Birth',name:'dob',allowBlank:false,maxValue:new Date()}
+				]
+			}],
+			buttons:{
+				text:'Register',
+				disabled:true,
+				formBind:true
+			}
+			
+		 });
+		 
+		 
+		 });
+      </script>
+   </head>
+   <body>
+      <div id="helloWorldPanel" />
+   </body>
+</html>
